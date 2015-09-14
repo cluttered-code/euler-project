@@ -1,0 +1,20 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    guavaVersion = '18.+'
+}
+
+dependencies {
+    compile "com.google.guava:guava:${guavaVersion}"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
