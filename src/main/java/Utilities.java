@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,5 +52,11 @@ public class Utilities {
                 return false;
         }
         return true;
+    }
+
+    public static BufferedReader getResourceBufferedReader(final String resourceFilename) throws URISyntaxException, IOException {
+        final URI resourceURI = ClassLoader.getSystemResource(resourceFilename).toURI();
+        final Path resourcePath = Paths.get(resourceURI);
+        return Files.newBufferedReader(resourcePath);
     }
 }
