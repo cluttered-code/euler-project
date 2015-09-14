@@ -6,13 +6,32 @@ import java.util.Set;
  */
 public class Utilities {
 
+    public static boolean isPrime(final long number) {
+        if (number < 2) {
+            return false;
+        }
+        if (number == 2 || number == 3) {
+            return true;
+        }
+        if (number % 2 == 0 || number % 3 == 0) {
+            return false;
+        }
+        final long sqrtOfNumber = (long) Math.sqrt(number) + 1;
+        for (long i = 6L; i <= sqrtOfNumber; i += 6) {
+            if (number % (i - 1) == 0 || number % (i + 1) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static Set<Integer> primeFactorsOf(final long number) {
         final Set<Integer> primeFactors = new HashSet<>();
-        long copyOfInput = number;
-        for (int i = 2; i <= copyOfInput; i++) {
-            if (copyOfInput % i == 0) {
+        long current = number;
+        for (int i = 2; i <= current; i++) {
+            if (current % i == 0) {
                 primeFactors.add(i);
-                copyOfInput /= i;
+                current /= i;
                 i--;
             }
         }
@@ -21,8 +40,8 @@ public class Utilities {
 
     public static boolean isPalindrome(final long number) {
         final String numberString = String.valueOf(number);
-        for(int i = 0, j = numberString.length()-1; i < j; ++i, --j) {
-            if(numberString.charAt(i) != numberString.charAt(j))
+        for (int i = 0, j = numberString.length() - 1; i < j; ++i, --j) {
+            if (numberString.charAt(i) != numberString.charAt(j))
                 return false;
         }
         return true;

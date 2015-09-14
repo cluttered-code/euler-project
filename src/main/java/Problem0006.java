@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
  *
- * @author david.clutter@greyrocksoft.com
+ * @author David Clutter
  */
 public class Problem0006 {
 
