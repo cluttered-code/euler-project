@@ -18,4 +18,13 @@ public class Utilities {
         }
         return primeFactors;
     }
+
+    public static boolean isPalindrome(final long number) {
+        final String numberString = String.valueOf(number);
+        for(int i = 0, j = numberString.length()-1; i < j; ++i, --j) {
+            if(numberString.charAt(i) != numberString.charAt(j))
+                return false;
+        }
+        return true;
+    }
 }
