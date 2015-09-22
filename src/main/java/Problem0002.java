@@ -17,7 +17,7 @@ public class Problem0002 {
             final int temp = previous + current;
             previous = current;
             current = temp;
-            if(current % 2 == 0) {
+            if((current & 1) == 0) {
                 sum += current;
             }
         }
