@@ -7,9 +7,11 @@
  */
 public class Problem0003 {
 
+    private static final long INPUT = 600851475143L;
+
     public static void main(final String[] args) {
-        final int result = Utilities.primeFactorsOf(600851475143L).stream()
-                .max(Integer::compare)
+        final long result = Utilities.primeFactorsOf(INPUT).stream()
+                .max(Long::compare)
                 .get();
         System.out.println(result);
     }

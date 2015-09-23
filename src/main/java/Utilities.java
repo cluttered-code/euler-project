@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,10 +33,10 @@ public class Utilities {
         return true;
     }
 
-    public static Set<Integer> primeFactorsOf(final long number) {
-        final Set<Integer> primeFactors = new HashSet<>();
+    public static Set<Long> primeFactorsOf(final long number) {
+        final Set<Long> primeFactors = new HashSet<>();
         long current = number;
-        for (int i = 2; i <= current; i++) {
+        for (long i = 2; i <= current; i++) {
             if (current % i == 0) {
                 primeFactors.add(i);
                 current /= i;
@@ -43,6 +44,24 @@ public class Utilities {
             }
         }
         return primeFactors;
+    }
+
+    public static Set<Long> factorsOf(final long number) {
+        if (number == 1) {
+            return Collections.singleton(1L);
+        }
+        final Set<Long> factors = new HashSet<>();
+        long factor = 1;
+        long factoredNumber = number;
+        while (factor < factoredNumber) {
+            if (number % factor == 0) {
+                factoredNumber = number / factor;
+                factors.add(factor);
+                factors.add(factoredNumber);
+            }
+            ++factor;
+        }
+        return factors;
     }
 
     public static boolean isPalindrome(final long number) {
