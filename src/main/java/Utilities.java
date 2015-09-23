@@ -24,7 +24,7 @@ public class Utilities {
             return false;
         }
         final long sqrtOfNumber = (long) Math.sqrt(number) + 1;
-        for (long i = 6L; i <= sqrtOfNumber; i += 6) {
+        for (long i = 6; i <= sqrtOfNumber; i += 6) {
             if (number % (i - 1) == 0 || number % (i + 1) == 0) {
                 return false;
             }

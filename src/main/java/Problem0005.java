@@ -12,10 +12,12 @@ public class Problem0005 {
         while (!found) {
             result += 20;
             for (int i = 2; i <= 20; ++i) {
-                if (result % i != 0)
+                if (result % i != 0) {
                     break;
-                if (i == 20)
+                }
+                if (i == 20) {
                     found = true;
+                }
             }
         }
         System.out.println(result);
