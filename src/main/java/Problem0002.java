@@ -13,11 +13,11 @@ public class Problem0002 {
         int previous = 1;
         int current = 2;
         long sum = current;
-        while(current <= 4_000_000) {
+        while (current <= 4_000_000) {
             final int temp = previous + current;
             previous = current;
             current = temp;
-            if((current & 1) == 0) {
+            if ((current & 1) == 0) {
                 sum += current;
             }
         }

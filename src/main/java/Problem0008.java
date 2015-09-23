@@ -1,17 +1,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
- *
+ * <p>
  * 73167176531330624919225119674426574742355349194934
  * 96983520312774506326239578318016984801869478851843
  * 85861560789112949495459501737958331952853208805511
@@ -32,9 +27,9 @@ import java.util.Queue;
  * 84580156166097919133875499200524063689912560717606
  * 05886116467109405077541002256983155200055935729725
  * 71636269561882670428252483600823257530420752963450
- *
- *  Find the thirteen adjacent digits in the 1000-digit number that have the greatest product.
- *  What is the value of this product?
+ * <p>
+ * Find the thirteen adjacent digits in the 1000-digit number that have the greatest product.
+ * What is the value of this product?
  *
  * @author David Clutter
  */
@@ -50,7 +45,7 @@ public class Problem0008 {
         initializeQueueValues(reader);
         long product = queueSum();
         int currentAscii;
-        while((currentAscii = reader.read()) != -1) {
+        while ((currentAscii = reader.read()) != -1) {
             final int current = Character.getNumericValue(currentAscii);
             queue.add(current);
             queue.remove();
@@ -61,18 +56,18 @@ public class Problem0008 {
     }
 
     private static void initializeQueueValues(final BufferedReader reader) throws IOException {
-        for(int i = 0; i < QUEUE_SIZE; ++i) {
+        for (int i = 0; i < QUEUE_SIZE; ++i) {
             final int current = Character.getNumericValue(reader.read());
             queue.add(current);
         }
     }
 
     private static long queueSum() {
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             return 0;
         }
         long product = 1;
-        for(final int value : queue) {
+        for (final int value : queue) {
             product *= value;
         }
         return product;
