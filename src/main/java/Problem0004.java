@@ -11,13 +11,13 @@ import java.util.stream.LongStream;
 public class Problem0004 {
 
     public static void main(final String[] args) {
-        final long largestPalindrome = LongStream.range(100, 1_000)
+        final long result = LongStream.range(100, 1_000)
                 .flatMap(i ->
                         LongStream.range(100, 1_000)
                                 .map(j -> i * j))
                 .filter(Utilities::isPalindrome)
                 .max()
                 .getAsLong();
-        System.out.println(largestPalindrome);
+        System.out.println(result);
     }
 }
