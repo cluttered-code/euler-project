@@ -1,5 +1,3 @@
-import java.util.Set;
-
 /**
  * The prime factors of 13195 are 5, 7, 13 and 29.
  * <p>
@@ -10,12 +8,9 @@ import java.util.Set;
 public class Problem0003 {
 
     public static void main(final String[] args) {
-        final Set<Integer> primeFactors = Utilities.primeFactorsOf(600851475143L);
-        System.out.println(
-                primeFactors.stream()
-                        .mapToInt(i -> i)
-                        .max()
-                        .getAsInt()
-        );
+        final int result = Utilities.primeFactorsOf(600851475143L).stream()
+                .max(Integer::compare)
+                .get();
+        System.out.println(result);
     }
 }
