@@ -7,7 +7,7 @@
  */
 public class Problem0003 {
 
-    private static final long INPUT = 600851475143L;
+    private static final long INPUT = Long.MAX_VALUE;//600851475143L;
 
     public static void main(final String[] args) {
         final long result = Utilities.primeFactorsOf(INPUT).stream()

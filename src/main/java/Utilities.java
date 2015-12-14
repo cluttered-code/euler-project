@@ -15,13 +15,10 @@ import java.util.Set;
 public class Utilities {
 
     public static boolean isPrime(final long number) {
-        if (number < 2) {
-            return false;
-        }
         if (number == 2 || number == 3) {
             return true;
         }
-        if (number % 2 == 0 || number % 3 == 0) {
+        if (number < 2 || number % 2 == 0 || number % 3 == 0) {
             return false;
         }
         final long sqrtOfNumber = (long) Math.sqrt(number) + 1;
@@ -34,15 +31,23 @@ public class Utilities {
     }
 
     public static Set<Long> primeFactorsOf(final long number) {
+        final long start = System.currentTimeMillis();
         final Set<Long> primeFactors = new HashSet<>();
         long current = number;
-        for (long i = 2; i <= current; i++) {
-            if (current % i == 0) {
+        if ((current & 1) == 0) {
+            primeFactors.add(2L);
+            current /= 2;
+        }
+        for (long i = 3; i <= current / i; i += 2) {
+            while (current % i == 0) {
                 primeFactors.add(i);
                 current /= i;
-                i--;
             }
         }
+        if (current > 1) {
+            primeFactors.add(current);
+        }
+        System.out.println(System.currentTimeMillis() - start);
         return primeFactors;
     }
 
