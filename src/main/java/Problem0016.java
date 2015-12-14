@@ -11,10 +11,7 @@ public class Problem0016 {
 
     public static void main(final String[] args) {
         final String numberString = BigInteger.valueOf(2).pow(1000).toString();
-        long sum = 0;
-        for(final char digit : numberString.toCharArray()) {
-            sum += Character.getNumericValue(digit);
-        }
+        final int sum = numberString.chars().map(Character::getNumericValue).sum();
         System.out.println(sum);
     }
 }
