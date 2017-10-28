@@ -10,8 +10,12 @@ import java.math.BigInteger;
 public class Problem0016 {
 
     public static void main(final String[] args) {
-        final String numberString = BigInteger.valueOf(2).pow(1000).toString();
-        final int sum = numberString.chars().map(Character::getNumericValue).sum();
+        final String sum = BigInteger.valueOf(2)
+            .pow(1000)
+            .toString()
+            .chars()
+            .map(Character::getNumericValue)
+            .sum();
         System.out.println(sum);
     }
 }
