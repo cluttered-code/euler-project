@@ -14,6 +14,43 @@ import java.util.Set;
  */
 public class Utilities {
 
+    /**
+     * A number (N) is prime if it cannot be evenly divided by any positive integer greater than 1 and itself (N).
+     * I = {x | 2 <= x < N}
+     * algorithm: N % I != 0
+     * runtime:   O(N)
+     * 
+     * All even numbers (2k) are evenly divisible by 2 we can remove them from the interval as long as we check N % 2 != 0 once.
+     * I' = {x = 2k+1 | 2 < x < N}
+     * algorithm: N % 2 != 0 ^ N % I' != 0
+     * runtime:   O(N/2)
+     * 
+     * Using Dirichlet's Theorem with a residue class mod 6, all primes are 6k+1 or 6k+5, with the exception of 2 and 3.
+     * 6k+0 even
+     * 6k+1 ?
+     * 6k+3 divisible by 3
+     * 6k+4 even
+     * 6k+5 ?
+     * 
+     * 6k+5 is equivalent to 6k-1. Using this methed we only use 2 of every 6 integers provided we also check N % 3 != 0 once.
+     * I'' = {x = (6k+1,6k-1) | 3 < x < N}
+     * algorithm: N % 2 != 0 ^ N % 3 != 0 ^ N % I'' != 0
+     * runtime:   O(N/3)
+     * 
+     * While these are all still linear, O(N), 1/3 is still a great improvment especially when using large numbers.
+     * 
+     * Taking it one step farther, if N is composite (not prime) and therefore factorable.
+     * if N = a * b
+     * and a <= b
+     * then N = a * a = sqrt(N) * sqrt(N)
+     * 
+     * if N is composite the highest possible factor is sqrt(N)
+     * I''' = {x = (6k+1,6k-1) | 2 < x <= sqrt(N)}
+     * algorithm: N % 2 != 0 ^ N % 3 != 0 ^ N % I''' != 0
+     * runtime:   O(sqrt(N)/3)
+     * 
+     * @param {number} number integer
+     */
     public static boolean isPrime(final long number) {
         if (number == 2 || number == 3) {
             return true;
